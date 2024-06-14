@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Stat Input Helper",
+    "version": "1.0",
+    "description": "A faster way for coaches to input data into a stat website.",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "popup.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
