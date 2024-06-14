@@ -1,21 +1,107 @@
+/* Body and general container styles */
 body {
+    background-color: #1a1a1a;
+    color: #ffffff;
     font-family: Arial, sans-serif;
-    padding: 10px;
+    padding: 20px;
+    margin: 0;
     width: 300px;
-  }
-  
-  #csvInput {
-    width: 100%;
-    height: 100px;
-  }
-  
-  #buttonsContainer {
-    margin-top: 10px;
-  }
-  
-  button {
-    display: block;
-    margin: 5px 0;
-    width: 100%;
-  }
-  
+}
+
+/* Grid layout for buttons */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+/* Styling for individual buttons */
+.icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: #555555;
+}
+
+/* Styling for icon inside button */
+.icon-button .material-icons {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+/* Styling for jersey number */
+.jersey-number {
+    font-size: 12px;
+    color: #cccccc; /* Lighter gray for jersey number */
+}
+
+/* Example: hover effect for icon button */
+.icon-button:hover {
+    background-color: #555555;
+}
+
+/* Styling for upload container */
+.upload-container {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Style for file upload button */
+.upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    line-height: 1; /* Ensure consistent line-height */
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+/* Custom icon styling */
+.upload-button .material-icons {
+    vertical-align: middle;
+    font-size: 24px;
+    margin-right: 8px; /* Adjust spacing between icon and text */
+}
+
+/* Trash can icon button */
+#clearButton {
+    display: inline-block;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust icon size */
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none; /* Remove default underline for <a> */
+    line-height: 1; /* Ensure consistent line-height */
+}
+
+#clearButton:hover {
+    background-color: #c82333;
+}
+
+#clearButton .material-icons {
+    vertical-align: middle;
+}

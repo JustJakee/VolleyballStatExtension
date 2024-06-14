@@ -4,20 +4,25 @@
     "version": "1.0",
     "description": "A faster way for coaches to input data into a stat website.",
     "permissions": [
-      "activeTab",
-      "scripting"
+        "activeTab",
+        "scripting",
+        "storage"
     ],
     "action": {
-      "default_popup": "popup.html"
+        "default_popup": "popup.html"
     },
     "background": {
-      "service_worker": "popup.js"
+        "service_worker": "background.js"
     },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "*.js",
+                "*.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
     ]
-  }
-  
+}

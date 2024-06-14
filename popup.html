@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Coach Stat Input Helper</title>
+  <title>Stat Input Helper</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=block" rel="stylesheet">
 </head>
 <body>
-  <h1>Input Data</h1>
-  <input type="file" id="fileInput" accept=".txt">
-  <textarea id="csvInput" placeholder="Paste CSV data here"></textarea>
-
-  <div id="buttonsContainer"></div>
+    <!--
+    <span class="material-symbols-outlined"> sports_volleyball </span>
+    -->
+  <h1>Upload Stat File</h1>
+  <div class="upload-container">
+    <label for="fileInput" class="upload-button">
+      <span class="material-icons">cloud_upload</span> Upload File
+    </label>
+    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+  </div>
+  <a id="clearButton" class="icon-button" href="#">
+    <span class="material-icons">delete</span>
+  </a>
+  <div id="buttonsContainer" class="button-grid">
   <script src="popup.js"></script>
 </body>
 </html>
