@@ -9,7 +9,17 @@
         "storage"
     ],
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/vb_icon16.png",
+            "48": "icons/vb_icon48.png",
+            "128": "icons/vb_icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icons/vb_icon16.png",
+        "48": "icons/vb_icon48.png",
+        "128": "icons/vb_icon128.png"
     },
     "background": {
         "service_worker": "background.js"
