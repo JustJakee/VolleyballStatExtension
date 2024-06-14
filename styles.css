@@ -6,6 +6,34 @@ body {
     padding: 20px;
     margin: 0;
     width: 300px;
+    display: flex;
+}
+
+/* Content container to make the content scrollable */
+.content {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-bottom: 50px;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #333333; /* Color of the track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid #333333; /* Border around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3; /* Color of the thumb on hover */
 }
 
 /* Grid layout for buttons */
@@ -58,10 +86,10 @@ body {
     margin-bottom: 20px;
 }
 
-/* Style for file upload button */
+/* Styling for upload button */
 .upload-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 30px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -69,7 +97,8 @@ body {
     font-size: 16px;
     transition: background-color 0.3s ease;
     text-align: center;
-    line-height: 1; /* Ensure consistent line-height */
+    line-height: 1;
+    border-radius: 10px;
 }
 
 .upload-button:hover {
@@ -80,7 +109,15 @@ body {
 .upload-button .material-icons {
     vertical-align: middle;
     font-size: 24px;
-    margin-right: 8px; /* Adjust spacing between icon and text */
+    margin-right: 5px; /* Adjust spacing between icon and text */
+}
+
+/* Styling for file name display */
+.file-name {
+    display: none; /* Initially hidden */
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
 }
 
 /* Trash can icon button */
@@ -91,11 +128,12 @@ body {
     color: #fff;
     border: none;
     cursor: pointer;
-    font-size: 24px; /* Adjust icon size */
+    font-size: 20px; /* Adjust icon size */
     transition: background-color 0.3s ease;
     text-align: center;
     text-decoration: none; /* Remove default underline for <a> */
     line-height: 1; /* Ensure consistent line-height */
+    border-radius: 10px;
 }
 
 #clearButton:hover {
@@ -105,3 +143,25 @@ body {
 #clearButton .material-icons {
     vertical-align: middle;
 }
+
+/* Styling for icon inside button */
+.clear-button .material-icons {
+    margin: 0px;
+    
+}
+
+/* Styling for footer */
+.footer {
+    background-color: #333333;
+    padding: 1px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    width:100%;
+    height: 40px;
+    margin-top: 10px;
+}
+
