@@ -6,7 +6,8 @@
     "permissions": [
         "activeTab",
         "scripting",
-        "storage"
+        "storage",
+        "fileSystem"
     ],
     "action": {
         "default_popup": "popup.html",
@@ -24,11 +25,20 @@
     "background": {
         "service_worker": "background.js"
     },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
     "web_accessible_resources": [
         {
             "resources": [
-                "*.js",
-                "*.html"
+                "*"
             ],
             "matches": [
                 "<all_urls>"
