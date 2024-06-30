@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return fileName;
   }
 
-  // Additional code for processCSV and other functions
   function processCSV(csv) {
       const rows = csv.trim().split('\n');
       const headers = rows[1].split('|').map(header => header.trim());
@@ -75,17 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const container = document.getElementById('buttonsContainer');
       container.innerHTML = '';
 
-      // Start iterating from the second row
       for (let i = 2; i < rows.length; i++) {
           const rowData = rows[i].split('|').map(data => data.trim());
-          const jerseyNumber = rowData[jerseyColumnIndex]; // Extract jersey number from the found column
+          const jerseyNumber = rowData[jerseyColumnIndex];
+
+          const playerData = headers.reduce((obj, header, index) => {
+              obj[header] = rowData[index];
+              return obj;
+          }, {});
 
           const button = document.createElement('button');
           button.classList.add('icon-button');
 
           // Create icon element
           const icon = document.createElement('img');
-          icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png'; // Replace with your icon file
+          icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png';
           icon.alt = `Player Icon`;
           icon.classList.add('icon');
           button.appendChild(icon);
@@ -97,16 +100,44 @@ document.addEventListener('DOMContentLoaded', () => {
           button.appendChild(jerseyNumberElement);
 
           button.addEventListener('click', () => {
-              chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                  chrome.scripting.executeScript({
-                      target: { tabId: tabs[0].id },
-                      func: insertData,
-                      args: [rowData]
-                  });
-              });
+              fillFormFields(playerData);
+              console.log(playerData)
           });
 
           container.appendChild(button);
       }
+  }
+
+  function fillFormFields(playerData) {
+      const fieldMapping = {
+          'MatchGamesPlayed': 'GP',
+          'TotalServes': 'Serving_ATT',
+          'ServingAces': 'Serving_ACE',
+          'ServingErrors': 'Serving_ERR',
+          'ServingPoints': 'Serving_PTS',
+          'AttacksAttempts': 'Attacks_ATT',
+          'AttacksKills': 'Attacks_KLS',
+          'AttacksErrors': 'Attacks_ERR',
+          'ServingReceivedSuccess': 'Srv_Rec_TOT',
+          'ServingReceivedErrors': 'Srv_Rec_ERR',
+          'BlocksSolo': 'Blocks_SLO',
+          'BlocksAssists': 'Blocks_AST',
+          'BlocksErrors': 'Blocks_ERR',
+          'BallHandlingAttempt': 'Ball_Handling',
+          'Assists': 'Assists',
+          'AssistsErrors': 'Assists_ERR',
+          'Digs': 'Digs_TOT',
+          'DigsErrors': 'Digs_ERR'
+      };
+
+      Object.keys(playerData).forEach(header => {
+          const fieldId = fieldMapping[header];
+          if (fieldId) {
+              const input = document.getElementById(fieldId);
+              if (input) {
+                  input.value = playerData[header];
+              }
+          }
+      });
   }
 });
