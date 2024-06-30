@@ -110,24 +110,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function fillFormFields(playerData) {
       const fieldMapping = {
-          'MatchGamesPlayed': 'GP',
-          'TotalServes': 'Serving_ATT',
-          'ServingAces': 'Serving_ACE',
-          'ServingErrors': 'Serving_ERR',
-          'ServingPoints': 'Serving_PTS',
-          'AttacksAttempts': 'Attacks_ATT',
-          'AttacksKills': 'Attacks_KLS',
-          'AttacksErrors': 'Attacks_ERR',
-          'ServingReceivedSuccess': 'Srv_Rec_TOT',
-          'ServingReceivedErrors': 'Srv_Rec_ERR',
-          'BlocksSolo': 'Blocks_SLO',
-          'BlocksAssists': 'Blocks_AST',
-          'BlocksErrors': 'Blocks_ERR',
-          'BallHandlingAttempt': 'Ball_Handling',
-          'Assists': 'Assists',
-          'AssistsErrors': 'Assists_ERR',
-          'Digs': 'Digs_TOT',
-          'DigsErrors': 'Digs_ERR'
+          'MatchGamesPlayed': 'gp',
+          'TotalServes': 'Srv',
+          'ServingAces': 'Ace',
+          'ServingErrors': 'SEr',
+          'ServingPoints': 'SPt',
+          'AttacksAttempts': 'Atk',
+          'AttacksKills': 'Kls',
+          'AttacksErrors': 'Er',
+          'ServingReceivedSuccess': 'SvR',
+          'ServingReceivedErrors': 'SRE',
+          'BlocksSolo': 'Sol',
+          'BlocksAssists': 'ABk',
+          'BlocksErrors': 'BkE',
+          'BallHandlingAttempt': 'Ball_Handling',// NOT NEEDED FOR STLTODAY
+          'Assists': 'Ast',
+          'AssistsErrors': 'Assists_ERR', // NOT NEEDED FOR STLTODAY
+          'Digs': 'Dig', 
+          'DigsErrors': 'DEr'
       };
 
       Object.keys(playerData).forEach(header => {
