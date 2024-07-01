@@ -9,6 +9,8 @@ A chrome extension for volleyball coaches to enter their data with a click of a 
 
 ![IZ937IwymN](https://github.com/JustJakee/VolleyballStatExtension/assets/45543899/21d80eeb-80e6-4b9b-9a10-ae573eb283d1)
 
+<img src="https://github.com/JustJakee/VolleyballStatExtension/assets/45543899/94f2c0f5-a56c-4ab0-9682-457a954d91b1" alt="chrome_extension_demo" width="550" height="450">
+
 ## Overview
 
 This project was inspired by a friend who coaches volleyball always having to manually enter data into a stat website. 
@@ -39,6 +41,7 @@ To use the extension:
   3. Upload a Stat File:
 
       - Click on the "Upload File" button and select a .txt file containing stats data.
+      - Here is an example data set: [Volleyball_Test_Data.txt](https://github.com/user-attachments/files/16059094/Volleyball_Test_Data.txt)
 
   4. View and Manage Stats:
 
