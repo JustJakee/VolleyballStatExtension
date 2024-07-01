@@ -28,7 +28,8 @@
     "content_scripts": [
         {
             "matches": [
-                "<all_urls>"
+                "<all_urls>",
+                "https://datacenter.statsonline.com/*"
             ],
             "js": [
                 "content.js"
