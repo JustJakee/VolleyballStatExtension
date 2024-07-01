@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (result.volleyballStats) {
       uploadText.style.display = 'none';
       fileNameSpan.style.display = 'inline';
-      // Assuming the file name is also stored in the storage
       const storedFileName = result.volleyballStats.fileName;
       fileNameSpan.textContent = truncateFileName(storedFileName, 8);
       processCSV(result.volleyballStats.fileContents);
@@ -26,10 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const contents = e.target.result;
         const fileName = file.name;
 
-        // Save the file contents and file name to Chrome storage
         chrome.storage.local.set({ volleyballStats: { fileName, fileContents: contents } }, function () {
           console.log('Data is saved to Chrome storage');
-          processCSV(contents); // Process CSV after successfully uploading and storing
+          processCSV(contents);
           uploadText.style.display = 'none';
           fileNameSpan.style.display = 'inline';
           fileNameSpan.textContent = truncateFileName(fileName, 8);
@@ -44,11 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(response.message);
       uploadText.style.display = 'inline';
       fileNameSpan.style.display = 'none';
-      fileNameSpan.textContent = ''; // Clear the displayed file name
+      fileNameSpan.textContent = '';
       document.getElementById('buttonsContainer').innerHTML = '';
     });
 
-    // Clear the data in Chrome storage
     chrome.storage.local.remove('volleyballStats', function () {
       console.log('Data cleared from Chrome storage');
     });
@@ -86,22 +83,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const button = document.createElement('button');
       button.classList.add('icon-button');
 
-      // Create icon element
       const icon = document.createElement('img');
       icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png';
       icon.alt = `Player Icon`;
       icon.classList.add('icon');
       button.appendChild(icon);
 
-      // Create jersey number element
       const jerseyNumberElement = document.createElement('div');
       jerseyNumberElement.textContent = `#${jerseyNumber}`;
       jerseyNumberElement.classList.add('jersey-number');
       button.appendChild(jerseyNumberElement);
 
       button.addEventListener('click', () => {
-        fillFormFields(playerData);
-        console.log(playerData)
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            files: ['content.js']
+          }).then(() => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: 'fillFormFields', data: playerData }, (response) => {
+              if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError);
+              } else {
+                console.log(response.status);
+              }
+            });
+          }).catch((err) => {
+            console.error('Failed to inject content script:', err);
+          });
+        });
       });
 
       container.appendChild(button);
@@ -123,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'BlocksSolo': 'Sol',
       'BlocksAssists': 'ABk',
       'BlocksErrors': 'BkE',
-      'BallHandlingAttempt': 'Ball_Handling',// NOT NEEDED FOR STLTODAY
+      'BallHandlingAttempt': 'Ball_Handling',
       'Assists': 'Ast',
-      'AssistsErrors': 'Assists_ERR', // NOT NEEDED FOR STLTODAY
+      'AssistsErrors': 'Assists_ERR',
       'Digs': 'Dig',
       'DigsErrors': 'DEr'
     };
@@ -134,8 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const fieldId = fieldMapping[header];
       if (fieldId) {
         console.log(`Field ID is: ${fieldId}`);
-        console.log(`Player data is: ${playerData}`);
-        const input = document.getElementById(fieldId); // getting null
+        const input = document.getElementById(fieldId);
         if (input) {
           console.log(`Input is: ${input}`);
           input.value = playerData[header];
