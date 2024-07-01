@@ -6,22 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fileInput.addEventListener('change', handleFileUpload);
   document.getElementById('clearButton').addEventListener('click', clearData);
 
-  // Test connection button
-  document.getElementById('testButton').addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.scripting.executeScript({
-        target: { tabId: tabs[0].id },
-        files: ['content.js']
-      })
-      .then(() => {
-        console.log('Content script injected');
-      })
-      .catch((err) => {
-        console.error('Failed to inject content script:', err);
-      });
-    });
-  });
-
   // Retrieve and display stored data on popup load
   chrome.storage.local.get('volleyballStats', function (result) {
     if (result.volleyballStats) {
@@ -111,8 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
       button.appendChild(jerseyNumberElement);
 
       button.addEventListener('click', () => {
-        fillFormFields(playerData);
-        console.log(playerData);
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            files: ['content.js']
+          }).then(() => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: 'fillFormFields', data: playerData }, (response) => {
+              if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError);
+              } else {
+                console.log(response.status);
+              }
+            });
+          }).catch((err) => {
+            console.error('Failed to inject content script:', err);
+          });
+        });
       });
 
       container.appendChild(button);
