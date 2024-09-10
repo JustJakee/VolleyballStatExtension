@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const icon = document.createElement('img');
       icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png';
       icon.alt = `Player Icon`;
+      icon.style.width = '25px';
+      icon.style.width = '25px';
       icon.classList.add('icon');
       button.appendChild(icon);
 
