@@ -1,0 +1,12 @@
+#uploadModal .modal-footer {
+    text-align: right;
+}
+
+#uploadModal .modal-footer button {
+    padding: 5px 10px;
+    background-color: gray;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

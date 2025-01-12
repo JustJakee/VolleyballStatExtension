@@ -1,0 +1,24 @@
+#uploadModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    border-radius: 8px;
+    width: 300px;
+}
+
+/* Modal header */
+#uploadModal .modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Modal body */
+#uploadModal .modal-body {
+    margin-bottom: 20px;
+}

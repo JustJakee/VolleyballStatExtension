@@ -1,34 +1,42 @@
+// background.js
+
+// Listen for when the extension is installed or updated
 chrome.runtime.onInstalled.addListener(() => {
-  // Initialize storage if necessary (e.g., on first install)
-  chrome.storage.local.get(['fileName', 'fileContents'], (result) => {
-    if (!result.fileName || !result.fileContents) {
-      chrome.storage.local.set({ fileName: '', fileContents: '' }, () => {
-        console.log(`${fileName} has been saved.`);
-      });
-    }
-  });
+  console.log('Extension installed or updated');
 });
 
+// Listen for messages from content scripts or popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'uploadFile') {
-    saveFileData(message.fileName, message.fileContents, sendResponse);
-    return true; // Keep the message channel open for async response
-  } else if (message.action === 'clearData') {
-    clearFileData(sendResponse);
-    return true; // Keep the message channel open for async response
+  if (message.action === 'getStatsData') {
+      // Retrieve stored stats data from chrome.storage
+      chrome.storage.local.get('statsData', (result) => {
+          if (result.statsData) {
+              sendResponse({ data: result.statsData });
+          } else {
+              sendResponse({ error: 'No data found' });
+          }
+      });
+      return true; // Indicates that we'll respond asynchronously
+  }
+
+  if (message.action === 'clearStatsData') {
+      // Clear stored stats data
+      chrome.storage.local.remove('statsData', () => {
+          console.log('Stats data cleared');
+          sendResponse({ status: 'success' });
+      });
+      return true; // Again, async response
   }
 });
 
-function saveFileData(fileName, fileContents, sendResponse) {
-  chrome.storage.local.set({ fileName: fileName, fileContents: fileContents }, () => {
-    console.log('File data saved:', fileName);
-    sendResponse({ message: 'File uploaded and data saved.' });
-  });
-}
+// Optional: Trigger actions periodically (e.g., background sync)
+chrome.alarms.create('backgroundSync', {
+  periodInMinutes: 5, // every 5 minutes
+});
 
-function clearFileData(sendResponse) {
-  chrome.storage.local.remove(['fileName', 'fileContents'], () => {
-    console.log('File data cleared.');
-    sendResponse({ message: 'Data cleared.' });
-  });
-}
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'backgroundSync') {
+      console.log('Background sync triggered');
+      // Add any background sync tasks you need here
+  }
+});

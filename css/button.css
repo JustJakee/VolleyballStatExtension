@@ -1,0 +1,13 @@
+#uploadButton {
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#uploadButton:hover {
+    background-color: darkblue;
+}
