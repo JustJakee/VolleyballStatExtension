@@ -19,7 +19,7 @@ style.textContent = `
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, #f9f9f9, #e8e8e8);
+    background: linear-gradient(135deg,rgb(52, 52, 52),rgb(57, 57, 57));
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -28,11 +28,18 @@ style.textContent = `
     animation: fadeIn 0.3s ease-in-out;
 }
 
+#uploadModal .file-name-display {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
 #uploadModal .close-icon {
     position: absolute;
     right: 20px;
     font-size: 24px;
-    color: black;
+    color: white;
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     transition: color 0.2s ease;
 }
@@ -46,60 +53,65 @@ style.textContent = `
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    font-family: 'Black Ops One', sans-serif !important;
 }
 
 #uploadModal button {
     width: 100%;
     padding: 10px;
-    background: #007bff;
+    background: #6200EE;
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 #uploadModal button:hover {
-    background: #0056b3;
+    background: #3700B3;
 }
 
 #buttonsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; /* Space between the buttons */
+  margin-top: 20px;
 }
 
-.icon-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+.player-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #8b8b8b !important;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.3s ease;
+  height: 100px; /* Fixed height for consistency */
 }
 
-.icon-button:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+.player-button:hover {
+  background-color: #717171 !important;
 }
 
-.icon {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 8px;
+@font-face {
+  font-family: 'JerseyFont';
+  src: url('fonts/jersey-M54.ttf') format('truetype');
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 .jersey-number {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Black Ops One', sans-serif !important;
 }
 
 @keyframes fadeIn {
@@ -113,7 +125,6 @@ style.textContent = `
     }
 }
 
-/* Reopen Icon Styles */
 .reopen-icon {
     position: fixed;
     top: 20px;
@@ -145,7 +156,7 @@ style.textContent = `
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: black;
+    background: linear-gradient(135deg,rgb(52, 52, 52),rgb(57, 57, 57));
     flex: 2;
 }
 
@@ -159,6 +170,81 @@ style.textContent = `
     height: 20px;
     background-color: #333;
     cursor: move;
+}
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+}
+
+.clear-file-button {
+  padding: 10px;
+  background-color: #FF7587;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-file-button:hover {
+  background-color:rgb(253, 84, 107);
+}
+
+.clear-file-button .material-symbols-outlined {
+  margin-right: 8px;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.upload-button:hover {
+  background-color: #0056b3; /* Hover effect */
+}
+
+.upload-button-container {
+  display: flex;
+  justify-content: space-between; /* Align buttons horizontally */
+  gap: 10px; /* Space between the buttons */
+  margin-top: 10px;
+  width: 100%;
+}
+
+#uploadButton {
+  font-size: 16px; /* Increase font size to make the upload button larger */
+  padding: 15px 30px; /* Larger padding for the upload button */
+  background-color: #018786; /* Green background  */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-file-button {
+  font-size: 20px; /* Icon size (larger trash can icon) */
+  padding: 10px;
+  background-color: transparent; /* Transparent background for the delete button */
+  color: #FF7587; 
+  border: none;
+  border-radius: 50%; /* Round shape */
+  cursor: pointer;
+  display: none;
+}
+
+.clear-file-button:hover {
+  background-color: #f1f1f1; /* Light background when hovered */
 }
 `;
 
@@ -199,6 +285,7 @@ function createModal() {
   const dragIcon = document.createElement("div");
   dragIcon.classList.add("material-icons", "close");
   dragIcon.innerText = "drag_indicator";
+  dragIcon.style.color = "white";
   dragIcon.style.cursor = "move";
   modal.appendChild(dragIcon);
 
@@ -212,7 +299,7 @@ function createModal() {
   // Modal header
   const modalHeader = document.createElement("div");
   modalHeader.classList.add("modal-header");
-  modalHeader.innerText = "Upload Player Stats";
+  modalHeader.innerText = "Volleyball Stat Importer";
   modal.appendChild(modalHeader);
 
   // Modal body
@@ -220,12 +307,29 @@ function createModal() {
   modalBody.classList.add("modal-body");
   modal.appendChild(modalBody);
 
+  // Upload button container (with delete button next to it)
+  const uploadButtonContainer = document.createElement("div");
+  uploadButtonContainer.classList.add("upload-button-container");
+
   // Upload button
   const uploadButton = document.createElement("button");
   uploadButton.id = "uploadButton";
-  uploadButton.innerText = "Upload Stats";
+  uploadButton.innerHTML = `
+  <span class="material-symbols-outlined" style="font-size: 20px; margin-right: 8px;">upload_file</span> 
+  <span style="font-weight: bold;">Upload File Here</span>`;
   uploadButton.classList.add("upload-button");
-  modalBody.appendChild(uploadButton);
+  uploadButtonContainer.appendChild(uploadButton);
+
+  // Clear file button (delete button next to upload button)
+  const clearFileButton = document.createElement("button");
+  clearFileButton.classList.add("clear-file-button");
+  clearFileButton.style.backgroundColor = "#B00020";
+  clearFileButton.innerHTML = `<span class="material-symbols-outlined">delete</span> Clear File`;
+  clearFileButton.addEventListener("click", clearFile);
+  uploadButtonContainer.appendChild(clearFileButton);
+
+  // Append the button container to the modal body
+  modalBody.appendChild(uploadButtonContainer);
 
   // Buttons container
   const buttonsContainer = document.createElement("div");
@@ -359,23 +463,90 @@ function createFileInput() {
 // Handle file upload and process the data
 function handleFileUpload(event) {
   const file = event.target.files[0];
+  const uploadButton = document.getElementById("uploadButton");
+
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
       const contents = e.target.result;
       const fileName = file.name;
 
+      // Truncate file name if necessary (e.g., if longer than 20 characters)
+      const truncatedName =
+        fileName.length > 20 ? fileName.substring(0, 15) + "..." : fileName;
+
       chrome.storage.local.set(
         { volleyballStats: { fileName, fileContents: contents } },
         function () {
           console.log("Data is saved to Chrome storage");
+
+          // Replace the upload button text with the truncated file name
+          uploadButton.innerText = `${truncatedName}`;
+
+          // Change button color to green
+          uploadButton.style.backgroundColor = "#5ea374";
+
+          // Show the "Clear File" button
+          showClearFileButton();
+
+          // Process the CSV contents here
           processCSV(contents);
-          mainModal.style.display = "block"; // Ensure the modal is visible with buttons
+
+          // Ensure the modal is visible with buttons
+          mainModal.style.display = "block";
         }
       );
     };
     reader.readAsText(file);
   }
+}
+function showClearFileButton() {
+  const clearFileButton = document.querySelector(".clear-file-button");
+
+  chrome.storage.local.get("volleyballStats", function (data) {
+    if (data.volleyballStats && data.volleyballStats.fileName) {
+      clearFileButton.style.display = "flex"; // Show the button
+    } else {
+      clearFileButton.style.display = "none"; // Hide the button
+    }
+  });
+}
+
+function hideClearFileButton() {
+  const clearFileButton = document.querySelector(".clear-file-button");
+  if (clearFileButton) {
+    clearFileButton.style.display = "none"; // Hide the button
+  }
+}
+
+// Function to clear the file input and any associated data
+function clearFile() {
+  // Find the file input (assuming you have an input element for file uploads)
+  const fileInput = document.querySelector("#fileInput");
+
+  if (fileInput) {
+    fileInput.value = ""; // Clear the file input
+  }
+
+  // Optionally, clear any data associated with the uploaded file
+  // Example: Resetting player stats or file data
+  const playerStats = document.querySelector("#playerStats");
+  if (playerStats) {
+    playerStats.innerHTML = ""; // Clear any displayed player stats
+  }
+
+  // Remove file data from storage
+  chrome.storage.local.remove("volleyballStats", function () {
+    console.log("File cleared from storage");
+  });
+
+  // Hide the Clear File button after clearing
+  const clearFileButton = document.querySelector(".clear-file-button");
+  if (clearFileButton) {
+    clearFileButton.style.display = "none"; // Hide the button
+  }
+
+  console.log("File cleared"); // You can log or alert the user
 }
 
 // Process the CSV data
@@ -431,20 +602,12 @@ function createPlayerButton(jerseyNumber, playerData) {
   }
 
   const button = document.createElement("button");
-  button.classList.add("icon-button");
-
-  const icon = document.createElement("img");
-  icon.src =
-    "https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png";
-  icon.alt = "Player Icon";
-  icon.style.width = "20px";
-  icon.style.height = "20px";
-  icon.classList.add("icon");
-  button.appendChild(icon);
+  button.classList.add("player-button");
 
   const jerseyNumberElement = document.createElement("div");
-  jerseyNumberElement.textContent = `#${jerseyNumber}`;
+  jerseyNumberElement.textContent = jerseyNumber;
   jerseyNumberElement.classList.add("jersey-number");
+
   button.appendChild(jerseyNumberElement);
 
   // When the button is clicked, process the player data
