@@ -1,0 +1,248 @@
+/* styles.css */
+#uploadModal {
+    position: fixed;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, rgb(52, 52, 52), rgb(57, 57, 57));
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 9999;
+    width: 320px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#uploadModal .file-name-display {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
+#uploadModal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  background: linear-gradient(135deg, rgb(52, 52, 52), rgb(57, 57, 57));
+  border-radius: 8px 8px 0 0;
+}
+
+#uploadModal .drag-icon-area {
+  cursor: move;
+  display: flex;
+  align-items: center;
+}
+
+#uploadModal .modal-title {
+  font-family: 'Black Ops One', sans-serif;
+  flex-grow: 1;
+  text-align: center;
+}
+
+#uploadModal .close-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+#uploadModal .close-icon:hover {
+  color: #555;
+}
+
+#uploadModal button {
+    width: 100%;
+    padding: 10px;
+    background: #6200EE;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+#uploadModal button:hover {
+    background: #3700B3;
+}
+
+#buttonsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; /* Space between the buttons */
+  margin-top: 20px;
+}
+
+.player-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #8b8b8b !important;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.3s ease;
+  height: 100px; /* Fixed height for consistency */
+}
+
+.player-button:hover {
+  background-color: #717171 !important;
+}
+
+@font-face {
+  font-family: 'JerseyFont';
+  src: url('fonts/jersey-M54.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+.jersey-number {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Black Ops One', sans-serif !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.reopen-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 120px;
+    height: 60px;
+    z-index: 10000;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+}
+
+.reopen-icon .drag-icon-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+    flex: 1;
+}
+
+.reopen-icon .drag-icon {
+    font-size: 24px;
+    cursor: move;
+}
+
+.reopen-icon .reopen-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(135deg,rgb(52, 52, 52),rgb(57, 57, 57));
+    flex: 2;
+}
+
+.reopen-icon .reopen-area .icon-image {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.reopen-icon .drag-area {
+    height: 20px;
+    background-color: #333;
+    cursor: move;
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+}
+
+.clear-file-button {
+  padding: 10px;
+  background-color: #FF7587;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-file-button:hover {
+  background-color:rgb(253, 84, 107);
+}
+
+.clear-file-button .material-symbols-outlined {
+  margin-right: 8px;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.upload-button:hover {
+  background-color: #0056b3; /* Hover effect */
+}
+
+.upload-button-container {
+  display: flex;
+  justify-content: space-between; /* Align buttons horizontally */
+  gap: 10px; /* Space between the buttons */
+  margin-top: 10px;
+  width: 100%;
+}
+
+#uploadButton {
+  font-size: 16px; /* Increase font size to make the upload button larger */
+  padding: 15px 30px; /* Larger padding for the upload button */
+  background-color: #018786; /* Green background  */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-file-button {
+  font-size: 20px; /* Icon size (larger trash can icon) */
+  padding: 10px;
+  background-color: transparent; /* Transparent background for the delete button */
+  color: #FF7587; 
+  border: none;
+  border-radius: 50%; /* Round shape */
+  cursor: pointer;
+  display: none;
+}
+
+.clear-file-button:hover {
+  background-color: #f1f1f1; /* Light background when hovered */
+}

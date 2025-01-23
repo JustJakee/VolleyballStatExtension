@@ -19,12 +19,13 @@ style.textContent = `
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(135deg,rgb(52, 52, 52),rgb(57, 57, 57));
+    background: linear-gradient(135deg, rgb(52, 52, 52), rgb(57, 57, 57));
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    z-index: 9999;
-    width: 320px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px; /* Responsive width */
+    max-height: 800px;
     animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -52,7 +53,8 @@ style.textContent = `
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
     color: white;
     font-family: 'Black Ops One', sans-serif !important;
 }
@@ -76,16 +78,17 @@ style.textContent = `
 }
 
 #buttonsContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px; /* Space between the buttons */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .player-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1 1 calc(33.333% - 15px); /* Three buttons per row */
+  max-width: 120px; 
+  padding: 20px;
   padding: 20px;
   background-color: #8b8b8b !important;
   border: none;
