@@ -24,9 +24,10 @@ style.textContent = `
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     padding: 25px;
     width: 90%;
-    max-width: 400px; /* Responsive width */
-    max-height: 800px;
+    max-width: 700px; /* Responsive width */
+    max-height: 550px;
     animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 #uploadModal .file-name-display {
@@ -78,7 +79,9 @@ style.textContent = `
 }
 
 #buttonsContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
@@ -86,7 +89,6 @@ style.textContent = `
 }
 
 .player-button {
-  flex: 1 1 calc(33.333% - 15px); /* Three buttons per row */
   max-width: 120px; 
   padding: 20px;
   padding: 20px;
@@ -476,7 +478,7 @@ function handleFileUpload(event) {
 
       // Truncate file name if necessary (e.g., if longer than 20 characters)
       const truncatedName =
-        fileName.length > 20 ? fileName.substring(0, 15) + "..." : fileName;
+        fileName.length > 20 ? fileName.substring(0, 20) + "..." : fileName;
 
       chrome.storage.local.set(
         { volleyballStats: { fileName, fileContents: contents } },
