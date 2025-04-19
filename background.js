@@ -1,3 +1,6 @@
+const fileName = "";
+const fileContents = "";
+
 chrome.runtime.onInstalled.addListener(() => {
   // Initialize storage if necessary (e.g., on first install)
   chrome.storage.local.get(["fileName", "fileContents"], (result) => {
