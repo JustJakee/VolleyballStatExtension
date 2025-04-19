@@ -1,52 +1,39 @@
 {
-    "manifest_version": 3,
-    "name": "Stat Input Helper",
-    "version": "1.0",
-    "description": "A faster way for coaches to input data into a stat website.",
-    "permissions": [
-        "activeTab",
-        "scripting",
-        "storage",
-        "sidePanel"
-    ],
-    "action": {
-        "default_icon": {
-            "16": "icons/vb_icon16.png",
-            "48": "icons/vb_icon48.png",
-            "128": "icons/vb_icon128.png"
-        },
-        "default_title": "Open Stat Side Panel"
+  "manifest_version": 3,
+  "name": "Stat Input Helper",
+  "version": "1.0",
+  "description": "A faster way for coaches to input data into a stat website.",
+  "host_permissions": ["https://datacenter.statsonline.com/*"],
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "action": {
+    "default_icon": {
+      "16": "icons/vb_icon16.png",
+      "48": "icons/vb_icon48.png",
+      "128": "icons/vb_icon128.png"
     },
-    "icons": {
-        "16": "icons/vb_icon16.png",
-        "48": "icons/vb_icon48.png",
-        "128": "icons/vb_icon128.png"
-    },
-    "background": {
-        "service_worker": "background.js"
-    },
-    "side_panel": {
-        "default_path": "sidepanel.html"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>",
-                "https://datacenter.statsonline.com/*"
-            ],
-            "js": [
-                "content.js"
-            ]
-        }
-    ],
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "*"
-            ],
-            "matches": [
-                "<all_urls>"
-            ]
-        }
-    ]
+    "default_title": "Open Stat Side Panel"
+  },
+  "icons": {
+    "16": "icons/vb_icon16.png",
+    "48": "icons/vb_icon48.png",
+    "128": "icons/vb_icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
