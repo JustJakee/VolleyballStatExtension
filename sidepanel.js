@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fileInput.addEventListener('change', handleFileUpload);
   document.getElementById('clearButton').addEventListener('click', clearData);
 
-  // Retrieve and display stored data on popup load
+  // Load stored file data when the side panel opens
   chrome.storage.local.get('volleyballStats', function (result) {
     if (result.volleyballStats) {
       uploadText.style.display = 'none';
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function clearData() {
     chrome.runtime.sendMessage({ action: 'clearData' }, (response) => {
-      console.log(response.message);
+      console.log(response?.message || "Clear message sent.");
       uploadText.style.display = 'inline';
       fileNameSpan.style.display = 'none';
       fileNameSpan.textContent = '';
@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Person_icon.png';
       icon.alt = `Player Icon`;
       icon.style.width = '20px';
-      icon.style.width = '20px';
       icon.classList.add('icon');
       button.appendChild(icon);
 
@@ -106,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (chrome.runtime.lastError) {
                 console.error(chrome.runtime.lastError);
               } else {
-                console.log(response.status);
+                console.log(response?.status || "Response received");
               }
             });
           }).catch((err) => {
@@ -117,42 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.appendChild(button);
     }
-  }
-
-  function fillFormFields(playerData) {
-    const fieldMapping = {
-      'MatchGamesPlayed': 'gp',
-      'TotalServes': 'Srv',
-      'ServingAces': 'Ace',
-      'ServingErrors': 'SEr',
-      'ServingPoints': 'SPt',
-      'AttacksAttempts': 'Atk',
-      'AttacksKills': 'Kls',
-      'AttacksErrors': 'Er',
-      'ServingReceivedSuccess': 'SvR',
-      'ServingReceivedErrors': 'SRE',
-      'BlocksSolo': 'Sol',
-      'BlocksAssists': 'ABk',
-      'BlocksErrors': 'BkE',
-      'BallHandlingAttempt': 'Ball_Handling',
-      'Assists': 'Ast',
-      'AssistsErrors': 'Assists_ERR',
-      'Digs': 'Dig',
-      'DigsErrors': 'DEr'
-    };
-
-    Object.keys(playerData).forEach(header => {
-      const fieldId = fieldMapping[header];
-      if (fieldId) {
-        console.log(`Field ID is: ${fieldId}`);
-        const input = document.getElementById(fieldId);
-        if (input) {
-          console.log(`Input is: ${input}`);
-          input.value = playerData[header];
-        } else {
-          console.log(`Input ${input} was not found`);
-        }
-      }
-    });
   }
 });

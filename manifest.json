@@ -7,15 +7,15 @@
         "activeTab",
         "scripting",
         "storage",
-        "fileSystem"
+        "sidePanel"
     ],
     "action": {
-        "default_popup": "popup.html",
         "default_icon": {
             "16": "icons/vb_icon16.png",
             "48": "icons/vb_icon48.png",
             "128": "icons/vb_icon128.png"
-        }
+        },
+        "default_title": "Open Stat Side Panel"
     },
     "icons": {
         "16": "icons/vb_icon16.png",
@@ -24,6 +24,9 @@
     },
     "background": {
         "service_worker": "background.js"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
     },
     "content_scripts": [
         {

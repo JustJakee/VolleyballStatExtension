@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Stat Input Helper</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=block" rel="stylesheet">
+    <style>
+        body {
+            width: 350px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        footer.footer {
+            padding: 8px 16px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
 </head>
 
 <body>
-    <!--
-    <span class="material-symbols-outlined"> sports_volleyball </span>
-    -->
     <div class="content">
         <h1>Volleyball Stat Importer!</h1>
+
         <div class="upload-container">
             <label for="fileInput" class="upload-button">
                 <span class="material-icons">cloud_upload</span>
@@ -23,9 +40,11 @@
             </label>
             <input type="file" id="fileInput" accept=".txt" style="display: none;">
         </div>
+
         <a id="clearButton" class="clear-button" href="#">
             <span class="material-icons">delete</span>
         </a>
+
         <div id="buttonsContainer" class="button-grid"></div>
     </div>
 
@@ -33,7 +52,6 @@
         <p>Created by Jake Bertish</p>
     </footer>
 
-    <script src="popup.js"></script>
+    <script src="sidepanel.js"></script>
 </body>
-
 </html>
