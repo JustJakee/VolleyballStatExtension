@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Stat Input Helper",
-  "version": "1.0",
-  "description": "A faster way for coaches to input data into a stat website.",
+  "name": "Volleyball Stat Input Helper",
+  "version": "1.1",
+  "description": "A chrome extension for volleyball coaches to enter their data with a click of a button.",
   "host_permissions": ["https://datacenter.statsonline.com/*"],
   "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
   "action": {
