@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       button.classList.add("icon-button");
 
       const jerseyNumberElement = document.createElement("div");
-      jerseyNumberElement.textContent = `#${jerseyNumber}`;
+      jerseyNumberElement.textContent = `${jerseyNumber}`;
       jerseyNumberElement.classList.add("jersey-number");
       button.appendChild(jerseyNumberElement);
 

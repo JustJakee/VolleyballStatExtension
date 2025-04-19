@@ -1,22 +1,42 @@
-/* Import sporty font for jersey numbers + header */
-@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+@font-face {
+  font-family: "Jersey M54";
+  src: url("fonts/jersey-m54.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-/* Base layout */
+/* Ensure full height layout */
+html,
 body {
   margin: 0;
   padding: 0;
-  width: 300px;
-  height: 100vh;
+  height: 100%;
+}
+
+body {
   background-color: #1a1a1a;
   color: white;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Flex wrapper to support footer push-down */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Main content area */
 .content {
   padding: 16px;
-  flex-grow: 1;
+  flex: 1;
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -29,6 +49,7 @@ h1 {
   margin: 0 0 16px;
 }
 
+/* Upload & delete buttons container */
 .upload-container {
   display: flex;
   justify-content: center;
@@ -38,13 +59,14 @@ h1 {
   margin-bottom: 16px;
 }
 
+/* Upload and clear button base styles */
 .upload-button,
 .clear-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  min-height: 40px; /* 🔥 force consistent height */
+  min-height: 40px;
   font-size: 14px;
   font-weight: 600;
   border: none;
@@ -87,31 +109,32 @@ h1 {
   font-size: 18px;
 }
 
-/* File name */
+/* File name text (optional display) */
 .file-name {
   display: none;
   font-size: 13px;
   color: #fff;
 }
 
-/* Grid layout */
+/* Grid layout for player buttons */
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
   justify-items: center;
+  margin-top: 10px;
 }
 
 /* Player buttons */
 .icon-button {
   width: 100%;
-  height: 60px;
+  height: 80px;
   background-color: #333;
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
   color: white;
-  font-size: 1.2rem;
-  font-family: "Jersey 10", sans-serif;
+  font-size: 1.6rem;
+  font-family: "Jersey M54", "Impact", sans-serif;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   display: flex;
@@ -124,10 +147,10 @@ h1 {
 }
 
 .jersey-number {
-  font-size: 1.4rem;
+  font-size: 3rem;
 }
 
-/* Scrollbar styling */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -144,12 +167,14 @@ h1 {
   background-color: #0056b3;
 }
 
-/* Footer */
+/* Footer styling */
 .footer {
   background-color: #2a2a2a;
-  padding: 10px;
+  color: #ffffff;
   font-size: 12px;
   text-align: center;
-  color: #aaa;
+  padding: 10px;
+  width: 100%;
   border-top: 1px solid #444;
+  box-sizing: border-box;
 }
