@@ -7,9 +7,8 @@
 
 A chrome extension for volleyball coaches to enter their data with a click of a button.
 
-![IZ937IwymN](https://github.com/JustJakee/VolleyballStatExtension/assets/45543899/21d80eeb-80e6-4b9b-9a10-ae573eb283d1)
+![ExtensionWhenOn](https://github.com/user-attachments/assets/1cd2fecd-e487-4387-8dba-88314b33d96a)
 
-<img src="https://github.com/JustJakee/VolleyballStatExtension/assets/45543899/94f2c0f5-a56c-4ab0-9682-457a954d91b1" alt="chrome_extension_demo" width="550" height="450">
 
 ## Overview
 
