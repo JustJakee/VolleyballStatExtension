@@ -4,7 +4,13 @@
   "version": "1.1",
   "description": "A chrome extension for volleyball coaches to enter their data with a click of a button.",
   "host_permissions": ["https://datacenter.statsonline.com/*"],
-  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel",
+    "tabs"
+  ],
   "action": {
     "default_icon": {
       "16": "icons/vb_icon16.png",
