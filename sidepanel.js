@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             uploadText.style.display = "none";
             fileNameSpan.style.display = "inline";
             fileNameSpan.textContent = truncateFileName(fileName, 8);
-          }
+          },
         );
       };
       reader.readAsText(file);
@@ -64,8 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function processCSV(csv) {
-    const rows = csv.trim().split("\n");
-    const headers = rows[1].split("|").map((header) => header.trim());
+    const rows = csv
+      .split(/\r?\n/)
+      .map((row) => row.trim())
+      .filter((row) => row.length > 0);
+    const headerIndex = rows.findIndex((row) =>
+      row.split("|").some((header) => header.trim() === "Jersey"),
+    );
+
+    if (headerIndex === -1) {
+      console.error('Column "Jersey" not found in CSV headers.');
+      return;
+    }
+
+    const headers = rows[headerIndex].split("|").map((header) => header.trim());
     const jerseyColumnIndex = headers.indexOf("Jersey");
 
     if (jerseyColumnIndex === -1) {
@@ -76,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("buttonsContainer");
     container.innerHTML = "";
 
-    for (let i = 2; i < rows.length; i++) {
+    for (let i = headerIndex + 1; i < rows.length; i++) {
       const rowData = rows[i].split("|").map((data) => data.trim());
       const jerseyNumber = rowData[jerseyColumnIndex];
 
@@ -110,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   } else {
                     console.log(response?.status || "Response received");
                   }
-                }
+                },
               );
             })
             .catch((err) => {

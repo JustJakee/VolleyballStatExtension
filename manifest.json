@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Volleyball Stat Input Helper",
-  "version": "1.2",
+  "version": "1.3",
   "description": "A chrome extension for volleyball coaches to enter their data with a click of a button.",
   "host_permissions": ["https://datacenter.statsonline.com/*"],
   "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
@@ -12,6 +12,15 @@
       "128": "icons/vb_icon128.png"
     },
     "default_title": "Open Stat Side Panel"
+  },
+  "commands": {
+    "toggle-side-panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open the Volleyball Stat Helper side panel"
+    }
   },
   "icons": {
     "16": "icons/vb_icon16.png",

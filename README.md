@@ -39,7 +39,7 @@ To use the extension:
     
   3. Upload a Stat File:
 
-      - Click on the "Upload File" button and select a .txt file containing stats data.
+      - Click on the "Upload File" button and select a .txt file containing stats data. The extension supports both files with a leading identifier and newer files where the header is the first line.
       - Here is an example data set: [Volleyball_Test_Data.txt](https://github.com/user-attachments/files/16059094/Volleyball_Test_Data.txt)
 
   4. View and Manage Stats:
@@ -53,4 +53,3 @@ To use the extension:
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to submit issues or pull requests.
 You can find me on LinkedIn [@jake-bertish](https://www.linkedin.com/in/jake-bertish/) if you have questions!
-

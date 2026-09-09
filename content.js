@@ -37,7 +37,7 @@ function fillFormFields(playerData) {
 
   // Click the save button after filling the form fields
   const saveButton = document.querySelector(
-    'button.w-100.btn.btn-outline-success[type="submit"]'
+    'button.w-100.btn.btn-outline-success[type="submit"]',
   );
   if (saveButton) {
     saveButton.click();

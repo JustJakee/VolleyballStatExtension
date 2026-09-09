@@ -33,7 +33,7 @@ function saveFileData(fileName, fileContents, sendResponse) {
     () => {
       console.log("File data saved:", fileName);
       sendResponse({ message: "File uploaded and data saved." });
-    }
+    },
   );
 }
 
@@ -62,9 +62,11 @@ async function openSidePanelForActiveTab() {
   await chrome.sidePanel.open({ tabId: tab.id });
 }
 
-// Listen for hotkey command
-chrome.commands.onCommand.addListener((command) => {
-  if (command === "toggle-side-panel") {
-    openSidePanelForActiveTab();
-  }
-});
+// Listen for hotkey command when the Commands API is available
+if (chrome.commands?.onCommand) {
+  chrome.commands.onCommand.addListener((command) => {
+    if (command === "toggle-side-panel") {
+      openSidePanelForActiveTab();
+    }
+  });
+}
